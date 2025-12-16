@@ -5,13 +5,13 @@
 
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
-SDL_FRect player = { 10, 20, 30, 30 };
+Entity player;
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[]) {
 	SDL_SetAppMetadata("2D shoot game.DEV", "0.1", "com.shoot.game");
 
 	if (!SDL_Init(SDL_INIT_VIDEO)) {
-		SDL_Log("Couldn't initialize SDL: %a", SDL_GetError());
+		SDL_Log("Couldn't initialize SDL: %s", SDL_GetError());
 		return SDL_APP_FAILURE;
 	}
 		
@@ -21,6 +21,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[]) {
 	}
 
 	SDL_SetRenderLogicalPresentation(renderer, 400, 600, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+	player = init_player();
 
 	return SDL_APP_CONTINUE;
 }
@@ -29,7 +30,9 @@ SDL_AppResult SDL_AppIterate(void *appstate) {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(renderer);
 
-	draw_player(renderer, &player);
+	render_entity(renderer, &player);
+	player.transform.y += 2.0;
+	SDL_Log("rect y: %f\n", player.transform.y);
 
 	SDL_RenderPresent(renderer);
 

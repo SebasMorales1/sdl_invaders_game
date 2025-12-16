@@ -3,7 +3,8 @@
 
 #include <SDL3/SDL_rect.h>
 #include <SDL3/SDL_render.h>
+#include "entity.h"
 
-void draw_player(SDL_Renderer *renderer, SDL_FRect *rect);
+Entity init_player();
 
 #endif

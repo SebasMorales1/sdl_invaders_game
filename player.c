@@ -1,6 +1,6 @@
 #include "player.h"
 
-void draw_player(SDL_Renderer *renderer, SDL_FRect *rect) {
-	SDL_SetRenderDrawColor(renderer, 0, 255, 0, SDL_ALPHA_OPAQUE);
-	SDL_RenderFillRect(renderer, rect);
+Entity init_player() {
+	struct ColorRGB color = { 0, 255, 0 };
+	return create_entity(10, 20, 30, 30, 100, 0.5, color);
 }

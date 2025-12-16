@@ -11,11 +11,13 @@ struct ColorRGB {
 };
 
 typedef struct {
-	SDL_FRect rect;
+	SDL_FRect transform;
 	struct ColorRGB color;
+	uint16_t health;
+	float dps;
 } Entity;
 
-Entity create_entity(SDL_FRect rect, struct ColorRGB color);
+Entity create_entity(int x, int y, int w, int h, uint16_t health, float dps, struct ColorRGB color);
 
 void render_entity(SDL_Renderer *renderer, Entity *entity);
 
