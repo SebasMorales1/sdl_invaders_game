@@ -2,6 +2,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include "player.h"
+#include "render.h"
 
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
@@ -27,14 +28,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[]) {
 }
 
 SDL_AppResult SDL_AppIterate(void *appstate) {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-	SDL_RenderClear(renderer);
-
-	render_entity(renderer, &player);
-	player.transform.y += 2.0;
-	SDL_Log("rect y: %f\n", player.transform.y);
-
-	SDL_RenderPresent(renderer);
+	render(renderer);
 
 	return SDL_APP_CONTINUE;
 }
