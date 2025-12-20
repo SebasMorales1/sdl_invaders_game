@@ -27,7 +27,7 @@ void render(SDL_Renderer *renderer) {
 		stars_generated = 1;
 	}
 
-	SDL_SetRenderDrawColor(renderer, 0,0,0, SDL_ALPHA_OPAQUE);
+	SDL_SetRenderDrawColor(renderer, 0,0,20, SDL_ALPHA_OPAQUE);
 	SDL_RenderClear(renderer);
 	render_stars(renderer);
 
