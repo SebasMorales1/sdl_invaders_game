@@ -1,6 +1,6 @@
 #include "entity.h"
 
-Entity create_entity(int x, int y, int w, int h, uint16_t health, float dps, struct ColorRGB color) {
+Entity create_entity(int x, int y, int w, int h, uint16_t health, float dps, ColorRGB color) {
 	SDL_FRect transform = { x, y, w, h };
 	Entity entity = { transform, color, health, dps };
 	return entity;
