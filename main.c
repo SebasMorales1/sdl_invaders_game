@@ -3,6 +3,7 @@
 #include <SDL3/SDL_main.h>
 #include "game.h"
 #include "render.h"
+#include "update.h"
 
 #define SCREEN_WIDTH 400
 #define SCREEN_HEIGH 600
@@ -32,7 +33,10 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[]) {
 }
 
 SDL_AppResult SDL_AppIterate(void *appstate) {
+	update(&game);
 	render(renderer, &game);
+
+	SDL_Delay(50);
 
 	return SDL_APP_CONTINUE;
 }
