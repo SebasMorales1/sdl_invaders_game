@@ -9,6 +9,7 @@
 
 static SDL_Window *window = NULL;
 static SDL_Renderer *renderer = NULL;
+Game game;
 
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[]) {
 	SDL_SetAppMetadata("2D shoot game.DEV", "0.1", "com.shoot.game");
@@ -25,14 +26,13 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[]) {
 
 	SDL_SetRenderLogicalPresentation(renderer, SCREEN_WIDTH, SCREEN_HEIGH, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
-	Game game;
 	game_init(&game, SCREEN_WIDTH, SCREEN_HEIGH);
 
 	return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult SDL_AppIterate(void *appstate) {
-	render(renderer);
+	render(renderer, &game);
 
 	return SDL_APP_CONTINUE;
 }
